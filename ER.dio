@@ -25,10 +25,10 @@
                 <mxCell id="91" value="Buyers Table（購入者）" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;" vertex="1" parent="1">
                     <mxGeometry x="480" y="40" width="220" height="280" as="geometry"/>
                 </mxCell>
-                <mxCell id="92" value="user_id&#10;first_name&#10;last_name&#10;first_name_kana&#10;last_name_kana&#10;post_code&#10;city&#10;address&#10;building_name&#10;phone_number" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" vertex="1" parent="91">
+                <mxCell id="92" value="user_id&#10;first_name&#10;last_name&#10;first_name_kana&#10;last_name_kana&#10;postal_code&#10;prefecture&#10;city&#10;house_number&#10;building_name&#10;phone_number" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" vertex="1" parent="91">
                     <mxGeometry y="30" width="220" height="250" as="geometry"/>
                 </mxCell>
-                <mxCell id="93" value="Categorys Table" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;" vertex="1" parent="1">
+                <mxCell id="93" value="Categories Table" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;" vertex="1" parent="1">
                     <mxGeometry x="640" y="360" width="160" height="120" as="geometry"/>
                 </mxCell>
                 <mxCell id="94" value="name&#10;ancestry" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" vertex="1" parent="93">
