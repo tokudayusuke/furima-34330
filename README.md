@@ -102,6 +102,7 @@ belongs_to :product
 
 
 
+
 ## brands table
 
 | Column   | Type    | Options     |
