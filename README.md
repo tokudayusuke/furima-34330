@@ -62,6 +62,7 @@ Things you may want to cover:
 - has_one :record
 
 
+
 ## products table
 
 | Column                 | Type       | Options                        |
