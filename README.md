@@ -25,33 +25,29 @@ Things you may want to cover:
 
 ## users table
 
-| Column              | Type     | Options     |
-| ------------------- | -------- | ----------- |
-| nickname            | string   | null: false |
-| email               | string   | null: false |
-| encrypted_password  | string   | null: false |
-| first_name          | string   | null: false |
-| last_name           | string   | null: false |
-| first_name_kana     | string   | null: false |
-| last_name_kana      | string   | null: false |
-| birth_year          | string   | null: false |
-| birth_month         | string   | null: false |
-| birth_day           | string   | null: false |
+| Column              | Type     | Options                   |
+| ------------------- | -------- | ------------------------- |
+| nickname            | string   | null: false               |
+| email               | string   | null: false, unique: true |
+| encrypted_password  | string   | null: false               |
+| first_name          | string   | null: false               |
+| last_name           | string   | null: false               |
+| first_name_kana     | string   | null: false               |
+| last_name_kana      | string   | null: false               |
+| birthday            | date     | null: false               |
+
 
 ### Association
-- belongs_to :buyer
+- belongs_to :shipping_address
 - has_many :products
+- has_many :records
 
 
 
-## buyers table
+## shipping_address table
 
 | Column              | Type       | Options                        |
 | ------------------- | ---------- | ------------------------------ |
-| first_name          | string     | null: false                    |
-| last_name           | string     | null: false                    |
-| first_name_kana     | string     | null: false                    |
-| last_name_kana      | string     | null: false                    |
 | postal_code         | string     | null: false                    |
 | prefecture          | integer    | null: false                    |
 | city                | text       | null: false                    |
@@ -59,56 +55,44 @@ Things you may want to cover:
 | building_name       | text       |                                |
 | phone_number        | text       | null: false                    |
 | user_id             | references | null: false, foreign_key: true |
+| record_id           | references | null: false, foreign_key: true |
 
 ### Association
 - has_one :user
-
+- has_one :record
 
 
 ## products table
 
-| Column              | Type       | Options                        |
-| ------------------- | ---------- | ------------------------------ |
-| name                | string     | null: false                    |
-| description         | text       | null: false                    |
-| condition           | string     | null: false                    |
-| delivery_cost       | string     | null: false                    |
-| product_area        | integer    | null: false                    |
-| delivery_day        | string     | null: false                    |
-| sale_price          | string     | null: false                    |
-| category_id         | references | null: false, foreign_key: true |
-| user_id             | references | null: false, foreign_key: true |
-| brand_id            | references | null: false, foreign_key: true |
-
+| Column                 | Type       | Options                        |
+| ---------------------- | ---------- | ------------------------------ |
+| name                   | string     | null: false                    |
+| description            | text       | null: false                    |
+| condition_id           | integer    | null: false                    |
+| delivery_cost_id       | integer    | null: false                    |
+| product_area_id        | integer    | null: false                    |
+| delivery_day_id        | integer    | null: false                    |
+| sale_price             | string     | null: false                    |
+| user_id                | references | null: false, foreign_key: true |
+| shipping_address_id    | references | null: false, foreign_key: true |
 
 
 ### Association
 - belongs_to :user
-- has_many :categories
-- has_many :brands
+- belongs_to :record
 
 
 
-## categories table
+## records table
 
-| Column   | Type    | Options     |
-| -------- | ------- | ----------- |
-| name     | string  | null: false |
-| ancestry | string  | null: false |
-
-
-### Association
-belongs_to :product
-
-
-
-
-## brands table
-
-| Column   | Type    | Options     |
-| -------- | ------- | ----------- |
-| name     | string  | null: false |
+| Column              | Type       | Options                        |
+| ------------------- | ---------- | ------------------------------ |
+| user_id             | references | null: false, foreign_key: true |
+| product_id          | references | null: false, foreign_key: true |
+| shipping_address_id | references | null: false, foreign_key: true |
 
 
 ### Association
-belongs_to :product
+- belongs_to :shipping_address
+- has_many :products
+- belongs_to :user
