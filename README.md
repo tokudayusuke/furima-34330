@@ -23,6 +23,9 @@ Things you may want to cover:
 
 * ...
 
+
+
+
 ## users table
 
 | Column              | Type     | Options                   |
@@ -38,7 +41,6 @@ Things you may want to cover:
 
 
 ### Association
-- belongs_to :shipping_address
 - has_many :products
 - has_many :records
 
@@ -49,17 +51,16 @@ Things you may want to cover:
 | Column              | Type       | Options                        |
 | ------------------- | ---------- | ------------------------------ |
 | postal_code         | string     | null: false                    |
-| prefecture          | integer    | null: false                    |
-| city                | text       | null: false                    |
+| prefecture_id       | integer    | null: false                    |
+| city                | string     | null: false                    |
 | house_number        | string     | null: false                    |
-| building_name       | text       |                                |
-| phone_number        | text       | null: false                    |
+| building_name       | string     |                                |
+| phone_number        | string     | null: false                    |
 | user_id             | references | null: false, foreign_key: true |
 | record_id           | references | null: false, foreign_key: true |
 
 ### Association
-- has_one :user
-- has_one :record
+- belongs_to :record
 
 
 
@@ -75,12 +76,11 @@ Things you may want to cover:
 | delivery_day_id        | integer    | null: false                    |
 | sale_price             | string     | null: false                    |
 | user_id                | references | null: false, foreign_key: true |
-| shipping_address_id    | references | null: false, foreign_key: true |
 
 
 ### Association
 - belongs_to :user
-- belongs_to :record
+- has_one :record
 
 
 
@@ -90,10 +90,9 @@ Things you may want to cover:
 | ------------------- | ---------- | ------------------------------ |
 | user_id             | references | null: false, foreign_key: true |
 | product_id          | references | null: false, foreign_key: true |
-| shipping_address_id | references | null: false, foreign_key: true |
 
 
 ### Association
-- belongs_to :shipping_address
-- has_many :products
+- has_one :shipping_address
+- belongs_to :products
 - belongs_to :user
