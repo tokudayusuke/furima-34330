@@ -26,6 +26,8 @@ Things you may want to cover:
 
 
 
+
+
 ## users table
 
 | Column              | Type     | Options                   |
@@ -88,8 +90,8 @@ Things you may want to cover:
 
 | Column              | Type       | Options                        |
 | ------------------- | ---------- | ------------------------------ |
-| user111             | references | null: false, foreign_key: true |
-| product111          | references | null: false, foreign_key: true |
+| user                | references | null: false, foreign_key: true |
+| product             | references | null: false, foreign_key: true |
 
 
 ### Association
