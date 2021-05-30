@@ -26,7 +26,6 @@ Things you may want to cover:
 
 
 
-
 ## users table
 
 | Column              | Type     | Options                   |
@@ -47,7 +46,7 @@ Things you may want to cover:
 
 
 
-## shipping_address table
+## shipping_addresses table
 
 | Column              | Type       | Options                        |
 | ------------------- | ---------- | ------------------------------ |
@@ -57,7 +56,7 @@ Things you may want to cover:
 | house_number        | string     | null: false                    |
 | building_name       | string     |                                |
 | phone_number        | string     | null: false                    |
-| record_id           | references | null: false, foreign_key: true |
+| record              | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :record
@@ -74,8 +73,8 @@ Things you may want to cover:
 | delivery_cost_id       | integer    | null: false                    |
 | product_area_id        | integer    | null: false                    |
 | delivery_day_id        | integer    | null: false                    |
-| sale_price             | string     | null: false                    |
-| user_id                | references | null: false, foreign_key: true |
+| sale_price             | integer    | null: false                    |
+| user                   | references | null: false, foreign_key: true |
 | category_id            | integer    | null: false                    |
 
 
@@ -89,8 +88,8 @@ Things you may want to cover:
 
 | Column              | Type       | Options                        |
 | ------------------- | ---------- | ------------------------------ |
-| user_id             | references | null: false, foreign_key: true |
-| product_id          | references | null: false, foreign_key: true |
+| user111             | references | null: false, foreign_key: true |
+| product111          | references | null: false, foreign_key: true |
 
 
 ### Association
