@@ -3,13 +3,17 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  with_options presence: true do
+    validates :nickname
+    validates :birthday
 
-  validates :nickname, presence: true
-  validates :birthday, presence: true
-  validates :last_name, presence: true, format: {with: /\A[ぁ-んァ-ン一-龥]/ } 
-  validates :last_name_kana, presence: true, format: {with: /\A[ァ-ヶー－]+\z/ } 
-  validates :first_name, presence: true, format: {with: /\A[ぁ-んァ-ン一-龥]/ } 
-  validates :first_name_kana, presence: true, format: {with: /\A[ァ-ヶー－]+\z/ } 
+    with_options format: {with: /\A[ぁ-んァ-ン一-龥]/ } do
+      validates :first_name
+      validates :first_name_kana
+      validates :last_name
+      validates :last_name_kana
+    end
+  end
 end
 
 
