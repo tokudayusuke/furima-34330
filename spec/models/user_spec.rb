@@ -6,22 +6,9 @@ RSpec.describe User, type: :model do
       @user = FactoryBot.build(:user)
     end
 
-
-    describe 'ユーザー新規登録' do
       context '新規登録がうまくいくとき' do
         it "nicknameとemail、passwordとpassword_confirmation、first_nameとlast_name、first_name_kana、last_name_kana、birthdayが存在すれば登録できる" do
-          @user.nickname = "aaaaaa"
-          @user.password = "aaa000"
-          @user.password_confirmation = "aaa000"
-          @user.first_name = "山田"
-          @user.last_name = "太郎"
-          @user.first_name_kana = "ヤマダ"
-          @user.last_name_kana = "タロウ"
-          @user.birthday = FactoryBot.build(:user, birthday: @user.birthday)
-          expect(@user).to be_valid
-        end
-        it "passwordが6文字以上であれば登録できる" do
-          @user.nickname = "aaaaaaa"
+
           expect(@user).to be_valid
         end
       end
@@ -54,8 +41,8 @@ RSpec.describe User, type: :model do
         end
         
         it 'パスワードが5文字以下では登録できないこと' do
-          @user.password = '12345'
-          @user.password_confirmation = '12345'
+          @user.password = 'a2345'
+          @user.password_confirmation = 'a2345'
           @user.valid?
           expect(@user.errors.full_messages).to include('Password is too short (minimum is 6 characters)') 
         end
@@ -85,10 +72,10 @@ RSpec.describe User, type: :model do
         end
 
         it 'パスワードと確認用パスワードが一致していなければ登録できないこと' do
-          @user.password = '123456'
-          @user.password_confirmation = '1234567'
+          @user.password = 'a23456'
+          @user.password_confirmation = 'a234567'
           @user.valid?
-          expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password", "Password is invalid")
+          expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
         end
 
         it '確認用パスワードの入力が必須であること' do
@@ -153,7 +140,7 @@ RSpec.describe User, type: :model do
       end
     end
   end
-end
+
 
 
 
