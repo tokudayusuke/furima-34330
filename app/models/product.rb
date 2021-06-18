@@ -14,7 +14,7 @@ class Product < ApplicationRecord
   with_options presence: true do
     validates :nickname
     validates :description
-    validates :sale_price
+    validates :sale_price, format: { with: /\A[0-9]+\z/ }
     validates :user
     end
 
@@ -24,7 +24,7 @@ class Product < ApplicationRecord
       validates :delivery_cost_id
       validates :delivery_day_id
       validates :product_area_id
-
     end
+    
 end
 

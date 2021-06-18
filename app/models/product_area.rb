@@ -1,4 +1,4 @@
-class Product_area < ActiveHash::Base
+class ProductArea < ActiveHash::Base
   self.data = [
     { id: 1, name: '---' },
     { id: 2, name: '北海道' },
