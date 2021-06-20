@@ -14,8 +14,9 @@ class Product < ApplicationRecord
   with_options presence: true do
     validates :nickname
     validates :description
-    validates :sale_price, format: { with: /\A[0-9]+\z/ }
+    validates :sale_price, inclusion: { in: 300..9_999_999 }, format: { with: /\A[0-9]+\z/ }
     validates :user
+    validates :image
     end
 
     with_options numericality: { other_than: 1 } do
@@ -25,6 +26,7 @@ class Product < ApplicationRecord
       validates :delivery_day_id
       validates :product_area_id
     end
+    validates :sale_price, numericality: true
     
 end
 

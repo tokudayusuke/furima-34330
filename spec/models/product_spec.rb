@@ -4,6 +4,7 @@ RSpec.describe Product, type: :model do
   describe '商品出品機能' do
     before do
       @product = FactoryBot.build(:product)
+
     end
 
     context '商品出品がうまくいくとき' do
@@ -16,10 +17,10 @@ RSpec.describe Product, type: :model do
 
     context '商品出品ができない時' do
       it 'imageが空だと出品できない' do
-        @product.image = ''
+        @product.image = nil
         @product.valid?
 
-        expect(@product.errors.full_messages).to include()
+        expect(@product.errors.full_messages).to include("Image can't be blank")
       end
 
       it '商品名が空だと出品できない' do
@@ -73,19 +74,19 @@ RSpec.describe Product, type: :model do
       it '販売価格は、¥300以下では出品できない' do
         @product.sale_price = '1'
         @product.valid?
-        expect(@product.errors.full_messages).to include()
+        expect(@product.errors.full_messages).to include("Sale price is not included in the list")
       end
 
       it '販売価格は、¥9,999,999以上では出品できない' do
-        @product.sale_price = '100,000,000'
+        @product.sale_price = '100_000_000'
         @product.valid?
-        expect(@product.errors.full_messages).to include()
+        expect(@product.errors.full_messages).to include("Sale price is not included in the list")
       end
 
       it '販売価格は、全角数字では出品できない' do
-        @product.sale_price = '２２２２２２'
+        @product.sale_price = '１１１１'
         @product.valid?
-        expect(@product.errors.full_messages).to include()
+        expect(@product.errors.full_messages).to include("Sale price is not a number")
       end
     end
 
