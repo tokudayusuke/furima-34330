@@ -2,7 +2,6 @@ class Product < ApplicationRecord
 
   has_one_attached :image
   belongs_to :user
-  has_one_attached :image
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
   belongs_to :condition
@@ -15,7 +14,6 @@ class Product < ApplicationRecord
     validates :nickname
     validates :description
     validates :sale_price, inclusion: { in: 300..9_999_999 }, format: { with: /\A[0-9]+\z/ }
-    validates :user
     validates :image
     end
 

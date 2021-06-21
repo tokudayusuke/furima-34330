@@ -72,13 +72,13 @@ RSpec.describe Product, type: :model do
       end
 
       it '販売価格は、¥300以下では出品できない' do
-        @product.sale_price = '1'
+        @product.sale_price = 1
         @product.valid?
         expect(@product.errors.full_messages).to include("Sale price is not included in the list")
       end
 
       it '販売価格は、¥9,999,999以上では出品できない' do
-        @product.sale_price = '100_000_000'
+        @product.sale_price = 100_000_000
         @product.valid?
         expect(@product.errors.full_messages).to include("Sale price is not included in the list")
       end
@@ -87,6 +87,24 @@ RSpec.describe Product, type: :model do
         @product.sale_price = '１１１１'
         @product.valid?
         expect(@product.errors.full_messages).to include("Sale price is not included in the list")
+      end
+
+      it '半角英数混合では登録できないこと' do
+        @product.sale_price = 'aa11'
+        @product.valid?
+        expect(@product.errors.full_messages).to include("Sale price is not a number")
+      end
+
+      it '半角英語だけでは登録できないこと' do
+        @product.sale_price = 'aaaa'
+        @product.valid?
+        expect(@product.errors.full_messages).to include("Sale price is not a number")
+      end
+
+      it 'category_idが「1」では登録できないこと' do
+        @product.category_id = 1
+        @product.valid?
+        expect(@product.errors.full_messages).to include("Category must be other than 1")
       end
     end
 

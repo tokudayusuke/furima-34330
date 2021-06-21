@@ -1,10 +1,10 @@
 class FurimasController < ApplicationController
 
 
-  before_action :authenticate_user!, only: [:new]
+  before_action :authenticate_user!, only: [:new, :create]
 
   def index
-    @product = Product.includes(:user)
+    @product = Product.all 
   end
 
   def new
@@ -20,9 +20,9 @@ class FurimasController < ApplicationController
     end
   end
 
-  def show
-    @product = Product.find(params[:id])
-  end
+  #def show
+  #  @product = Product.find(params[:id])
+  #end
 
 
 
