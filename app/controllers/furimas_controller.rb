@@ -3,7 +3,7 @@ class FurimasController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
 
   def index
-    @product = Product.all.order("created_at DESC")
+    @product = Product.order("created_at DESC")
   end
 
   def new
@@ -19,9 +19,9 @@ class FurimasController < ApplicationController
     end
   end
 
-  def show
-    @product = Product.find(params[:id])
-  end
+  #def show
+  #  @product = Product.find(params[:id])
+  #end
 
 
 

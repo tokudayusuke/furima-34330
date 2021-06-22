@@ -127,13 +127,10 @@
       新規投稿商品
     </div>
     <ul class='item-lists'>
-
-      <%# 商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
       <% if @product.present? %>
       <% @product.each do |product| %>
       <li class='list'>
         <%= link_to furimas_path(@product) do %>
-
         <div class='item-img-content'>
           <%= image_tag product.image, class: "item-img" %>
 
@@ -144,7 +141,6 @@
           </div>
           <%# end %>
           <%# //商品が売れていればsold outを表示しましょう %>
-
         </div>
         <div class='item-info'>
           <h3 class='item-name'>
@@ -161,12 +157,7 @@
         <% end %>
       </li>
       <% end %>
-      <% end %>
-      <%# //商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
-
-      <%# 商品がない場合は以下のダミー商品が表示されるようにしましょう %>
-      <%# 商品がある場合は表示されないようにしましょう %>
-
+      <% else %>
       <% if @product.length == 0 %>
       <li class='list'>
         <%= link_to '#' do %>
@@ -186,9 +177,7 @@
         <% end %>
       </li>
       <% end %>
-
-      <%# //商品がある場合は表示されないようにしましょう %>
-      <%# //商品がない場合は以下のダミー商品が表示されるようにしましょう %>
+      <% end %>
     </ul>
   </div>
   <%# /商品一覧 %>
