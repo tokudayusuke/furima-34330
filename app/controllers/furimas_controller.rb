@@ -4,7 +4,7 @@ class FurimasController < ApplicationController
 
 
   def index
-    @product = Product.all 
+    #@product = Product.all 
   end
 
   def new

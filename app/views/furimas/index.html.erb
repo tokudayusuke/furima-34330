@@ -131,7 +131,7 @@
       <%# 商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
       <li class='list'>
 
-        <%= link_to furimas_path(@product) do %>
+        <%#= link_to furimas_path(@product) do %>
 
         <div class='item-img-content'>
           <%= image_tag "item-sample.png", class: "item-img" %>
@@ -162,7 +162,7 @@
       <%# 商品がない場合は以下のダミー商品が表示されるようにしましょう %>
       <%# 商品がある場合は表示されないようにしましょう %>
 
-      <% if @product.length == 0 %>
+      <%# if @product.length == 0 %>
       <li class='list'>
         <%= link_to '#' do %>
         <%= image_tag "https://tech-master.s3.amazonaws.com/uploads/curriculums/images/Rails1-4/sample.jpg", class: "item-img" %>

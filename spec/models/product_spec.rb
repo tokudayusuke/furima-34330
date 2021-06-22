@@ -106,6 +106,30 @@ RSpec.describe Product, type: :model do
         @product.valid?
         expect(@product.errors.full_messages).to include("Category must be other than 1")
       end
+
+      it 'condition_idが「1」では登録できないこと' do
+        @product.condition_id = 1
+        @product.valid?
+        expect(@product.errors.full_messages).to include("Condition must be other than 1")
+      end
+
+      it 'delivery_cost_idが「1」では登録できないこと' do
+        @product.delivery_cost_id = 1
+        @product.valid?
+        expect(@product.errors.full_messages).to include("Delivery cost must be other than 1")
+      end
+
+      it 'product_area_idが「1」では登録できないこと' do
+        @product.product_area_id = 1
+        @product.valid?
+        expect(@product.errors.full_messages).to include("Product area must be other than 1")
+      end
+
+      it 'delivery_day_idが「1」では登録できないこと' do
+        @product.delivery_day_id = 1
+        @product.valid?
+        expect(@product.errors.full_messages).to include("Delivery day must be other than 1")
+      end
     end
 
   end
