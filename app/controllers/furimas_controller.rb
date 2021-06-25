@@ -1,8 +1,8 @@
 class FurimasController < ApplicationController
 
   before_action :authenticate_user!, only: [:new, :create, :edit]
-  before_action :set_product, only: [:show, :edit, :update]
-  before_action :contributor_confirmation, only: [:edit, :update]
+  before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :contributor_confirmation, only: [:edit, :update, :destroy]
 
 
   def index
@@ -33,6 +33,14 @@ class FurimasController < ApplicationController
       redirect_to furima_path(@product)
     else
       render :edit
+    end
+  end
+
+  def destroy
+    if @product.destroy
+      redirect_to root_path
+    else
+      redirect_to root_path
     end
   end
 
