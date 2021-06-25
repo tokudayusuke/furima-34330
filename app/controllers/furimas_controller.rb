@@ -1,6 +1,9 @@
 class FurimasController < ApplicationController
 
-  before_action :authenticate_user!, only: [:new, :create]
+  before_action :authenticate_user!, only: [:new, :create, :edit]
+  before_action :set_product, only: [:show, :edit, :update]
+  before_action :contributor_confirmation, only: [:edit, :update]
+
 
   def index
     @product = Product.order("created_at DESC")
@@ -20,15 +23,31 @@ class FurimasController < ApplicationController
   end
 
   def show
-    @product = Product.find(params[:id])
   end
 
+  def edit
+  end
 
+  def update
+    if @product.update(product_params)
+      redirect_to furima_path(@product)
+    else
+      render :edit
+    end
+  end
 
   private
 
   def product_params
     params.require(:product).permit(:nickname, :description, :sale_price, :category_id, :condition_id, :delivery_cost_id, :delivery_day_id, :product_area_id, :image).merge(user_id: current_user.id)
+  end
+
+  def set_product
+    @product = Product.find(params[:id])
+  end
+
+  def contributor_confirmation
+    redirect_to root_path unless current_user == @product.user
   end
 end
 
