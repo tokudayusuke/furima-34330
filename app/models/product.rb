@@ -8,10 +8,11 @@ class Product < ApplicationRecord
   belongs_to :delivery_cost
   belongs_to :delivery_day
   belongs_to :product_area
+  has_one :order
 
 
   with_options presence: true do
-    validates :nickname
+    validates :name
     validates :description
     validates :sale_price, inclusion: { in: 300..9_999_999 }, format: { with: /\A[0-9]+\z/ }
     validates :image

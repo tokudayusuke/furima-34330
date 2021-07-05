@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :product do
 
-    nickname  {"fish"}
+    name  {"fish"}
     description {"aaa"}
     condition_id  {2}
     delivery_cost_id  {2}

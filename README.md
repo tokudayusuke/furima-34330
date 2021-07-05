@@ -44,7 +44,7 @@ Things you may want to cover:
 
 ### Association
 - has_many :products
-- has_many :records
+- has_many :orders
 
 
 
@@ -58,10 +58,10 @@ Things you may want to cover:
 | house_number        | string     | null: false                    |
 | building_name       | string     |                                |
 | phone_number        | string     | null: false                    |
-| record              | references | null: false, foreign_key: true |
+| order               | references | null: false, foreign_key: true |
 
 ### Association
-- belongs_to :record
+- belongs_to :order
 
 
 
@@ -82,11 +82,11 @@ Things you may want to cover:
 
 ### Association
 - belongs_to :user
-- has_one :record
+- has_one :order
 
 
 
-## records table
+## orders table
 
 | Column              | Type       | Options                        |
 | ------------------- | ---------- | ------------------------------ |

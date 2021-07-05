@@ -1,4 +1,4 @@
-class FurimasController < ApplicationController
+class ProductsController < ApplicationController
 
   before_action :authenticate_user!, only: [:new, :create, :edit]
   before_action :set_product, only: [:show, :edit, :update, :destroy]
@@ -30,7 +30,7 @@ class FurimasController < ApplicationController
 
   def update
     if @product.update(product_params)
-      redirect_to furima_path(@product)
+      redirect_to product_path(@product)
     else
       render :edit
     end
@@ -47,7 +47,7 @@ class FurimasController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:nickname, :description, :sale_price, :category_id, :condition_id, :delivery_cost_id, :delivery_day_id, :product_area_id, :image).merge(user_id: current_user.id)
+    params.require(:product).permit(:name, :description, :sale_price, :category_id, :condition_id, :delivery_cost_id, :delivery_day_id, :product_area_id, :image).merge(user_id: current_user.id)
   end
 
   def set_product
@@ -57,6 +57,7 @@ class FurimasController < ApplicationController
   def contributor_confirmation
     redirect_to root_path unless current_user == @product.user
   end
+
 end
 
 
