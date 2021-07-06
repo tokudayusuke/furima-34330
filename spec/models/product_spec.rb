@@ -8,7 +8,7 @@ RSpec.describe Product, type: :model do
     end
 
     context '商品出品がうまくいくとき' do
-      it 'nickname, description, condition_id, delivery_cost_id, product_area_id, delivery_day_id, sale_price, category_id, user_id が存在すれば出品できる' do
+      it 'name, description, condition_id, delivery_cost_id, product_area_id, delivery_day_id, sale_price, category_id, user_id が存在すれば出品できる' do
 
         expect(@product).to be_valid
       end
@@ -24,9 +24,9 @@ RSpec.describe Product, type: :model do
       end
 
       it '商品名が空だと出品できない' do
-        @product.nickname = ''
+        @product.name = ''
         @product.valid?
-        expect(@product.errors.full_messages).to include("Nickname can't be blank")
+        expect(@product.errors.full_messages).to include("Name can't be blank")
       end
 
       it '商品の説明が空だと出品できない' do

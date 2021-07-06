@@ -130,21 +130,18 @@
       <% if @product.present? %>
       <% @product.each do |product| %>
       <li class='list'>
-        <%= link_to furima_path(product.id) do %>
+        <%= link_to product_path(product.id) do %>
         <div class='item-img-content'>
           <%= image_tag product.image, class: "item-img" %>
-
-          <%# 商品が売れていればsold outを表示しましょう %>
-          <%# if product.record == nil %>
+          <% if product.order.present? %>
           <div class='sold-out'>
             <span>Sold Out!!</span>
           </div>
-          <%# end %>
-          <%# //商品が売れていればsold outを表示しましょう %>
+          <% end %>
         </div>
         <div class='item-info'>
           <h3 class='item-name'>
-            <%= product.nickname %>
+            <%= product.name %>
           </h3>
           <div class='item-price'>
             <span><%= product.sale_price %>円<br><%= product.delivery_cost.name %></span>
@@ -181,7 +178,7 @@
   <%# /商品一覧 %>
 </div>
 
-<%= link_to('furimas/new', class: 'purchase-btn') do %>
+<%= link_to('products/new', class: 'purchase-btn') do %>
 
   <span class='purchase-btn-text'>出品する</span>
   <%= image_tag 'icon_camera.png' , size: '185x50' ,class: "purchase-btn-icon" %>
