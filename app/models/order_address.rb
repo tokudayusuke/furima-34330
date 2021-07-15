@@ -11,6 +11,7 @@ class OrderAddress
     validates :phone_number, format: { with: /\A\d{10,11}\z/ }
     validates :user_id
     validates :product_id
+    validates :token
   end
 
   with_options numericality: { other_than: 1 } do
